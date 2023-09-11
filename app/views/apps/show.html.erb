@@ -1,0 +1,32 @@
+<ul class="list-group">
+    <li class="list-group-item list-group-item-primary text-center display-4">
+      Name: <%= @app.name %>
+    </li>
+    <li class="list-group-item list-group-item-success text-center display-4">
+      Phone: <%= number_to_phone(@app.number) %>
+   </li>
+   <li class="list-group-item list-group-item-warning text-center display-4">
+      Payment: <%= number_to_currency(@app.payment) %>
+   </li>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <%= link_to "Add Payment", edit_app_path(@app.id), class: "btn btn-success btn-block" %>
+
+  <%= link_to 'Back', apps_path, :class => "btn btn-secondary btn-lg btn-block" %>
+   <%= link_to "Destroy", app_path(@app), :class => "btn btn-danger btn-block",
+      data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+   } %>
+</ul>
+<%= turbo_frame_tag "remote_modal", target: "_top" %>
